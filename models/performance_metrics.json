@@ -1,0 +1,57 @@
+{
+  "Can Tho": {
+    "location": "Can Tho",
+    "mae": 70.10316005902126,
+    "mse": 9941.487316021703,
+    "rmse": 99.70700735666327,
+    "mape": 48.640546901004974,
+    "accuracy": 51.359453098995026,
+    "test_days": 30,
+    "mean_actual": 151.0,
+    "mean_predicted": 173.3131639665284
+  },
+  "Da Nang": {
+    "location": "Da Nang",
+    "mae": 523.9754154998477,
+    "mse": 379142.5781536327,
+    "rmse": 615.7455465966707,
+    "mape": 249.79536928572625,
+    "accuracy": 0.0,
+    "test_days": 30,
+    "mean_actual": 214.8,
+    "mean_predicted": -309.1754154998478
+  },
+  "Ha Noi": {
+    "location": "Ha Noi",
+    "mae": 733.9567434124893,
+    "mse": 774991.4448762194,
+    "rmse": 880.3359840857463,
+    "mape": 229.04894737855344,
+    "accuracy": 0.0,
+    "test_days": 30,
+    "mean_actual": 328.26666666666665,
+    "mean_predicted": -405.69007674582275
+  },
+  "Hai Phong": {
+    "location": "Hai Phong",
+    "mae": 1126.3356975748347,
+    "mse": 1828848.4188493607,
+    "rmse": 1352.3492222238162,
+    "mape": 621.7767715073463,
+    "accuracy": 0.0,
+    "test_days": 30,
+    "mean_actual": 186.7,
+    "mean_predicted": -939.6356975748348
+  },
+  "Ho Chi Minh City": {
+    "location": "Ho Chi Minh City",
+    "mae": 1777.7774088469373,
+    "mse": 4346995.36313141,
+    "rmse": 2084.9449304793184,
+    "mape": 472.0567060333982,
+    "accuracy": 0.0,
+    "test_days": 30,
+    "mean_actual": 386.06666666666666,
+    "mean_predicted": -1391.7107421802707
+  }
+}

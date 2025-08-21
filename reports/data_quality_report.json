@@ -1,0 +1,56 @@
+{
+  "total_records": 455,
+  "date_range": {
+    "start": "2024-01-01",
+    "end": "2024-03-31",
+    "days": 90
+  },
+  "locations": 5,
+  "missing_values": {
+    "date": 0,
+    "location": 0,
+    "admission_count": 0,
+    "disease_severity": 0,
+    "is_weekend": 0,
+    "is_holiday": 0,
+    "year": 0,
+    "month": 0,
+    "day": 0,
+    "day_of_week": 0,
+    "day_of_year": 0,
+    "week_of_year": 0,
+    "quarter": 0,
+    "population": 0,
+    "admissions_per_100k": 0
+  },
+  "statistics": {
+    "mean_daily_admissions": 238.03956043956043,
+    "median_daily_admissions": 213.0,
+    "std_daily_admissions": 98.91235928431603,
+    "min_admissions": 73,
+    "max_admissions": 484
+  },
+  "location_summary": {
+    "count": {
+      "Can Tho": 91,
+      "Da Nang": 91,
+      "Ha Noi": 91,
+      "Hai Phong": 91,
+      "Ho Chi Minh City": 91
+    },
+    "mean": {
+      "Can Tho": 142.78021978021977,
+      "Da Nang": 198.9120879120879,
+      "Ha Noi": 308.68131868131866,
+      "Hai Phong": 171.58241758241758,
+      "Ho Chi Minh City": 368.24175824175825
+    },
+    "std": {
+      "Can Tho": 31.404812864627466,
+      "Da Nang": 43.160333731499435,
+      "Ha Noi": 63.05832910371849,
+      "Hai Phong": 41.01952541414229,
+      "Ho Chi Minh City": 58.90356349517229
+    }
+  }
+}

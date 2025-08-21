@@ -1,0 +1,50 @@
+# Hospital Forecasting Configuration
+
+# Data Sources
+data_sources:
+  covid_data:
+    url: "https://disease.sh/v3/covid-19/historical"
+    format: "json"
+  vietnam_health:
+    url: "https://api.data.gov.vn/"
+    format: "json"
+
+# Database Configuration
+database:
+  type: "sqlite"
+  name: "hospital_forecasting.db"
+  # For PostgreSQL (uncomment when needed)
+  # host: "localhost"
+  # port: 5432
+  # username: "user"
+  # password: "password"
+
+# Model Configuration
+models:
+  prophet:
+    seasonality_mode: "multiplicative"
+    yearly_seasonality: true
+    weekly_seasonality: true
+    daily_seasonality: false
+    
+  arima:
+    auto_arima: true
+    seasonal: true
+    
+# Forecasting Parameters
+forecasting:
+  prediction_days: 14
+  confidence_interval: 0.95
+  
+# Dashboard Configuration
+dashboard:
+  title: "Hospital Demand Forecasting"
+  refresh_interval: 3600  # seconds
+  
+# Locations
+locations:
+  - "Ho Chi Minh City"
+  - "Ha Noi" 
+  - "Da Nang"
+  - "Can Tho"
+  - "Hai Phong"

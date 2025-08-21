@@ -1,0 +1,52 @@
+{
+  "generated_at": "2025-08-21T10:56:55.527955",
+  "date_range": {
+    "start": "2024-01-01",
+    "end": "2024-03-31",
+    "days": 91
+  },
+  "locations": {
+    "count": 5,
+    "list": [
+      "Can Tho",
+      "Da Nang",
+      "Ha Noi",
+      "Hai Phong",
+      "Ho Chi Minh City"
+    ]
+  },
+  "diseases": {
+    "count": 7,
+    "list": [
+      "COVID-19",
+      "Dengue Fever",
+      "Diabetes",
+      "Flu",
+      "Heart Disease",
+      "Others",
+      "Pneumonia"
+    ]
+  },
+  "age_groups": {
+    "count": 5,
+    "list": [
+      "0-18",
+      "19-30",
+      "31-50",
+      "51-65",
+      "65+"
+    ]
+  },
+  "records": {
+    "admissions": 15243,
+    "capacity": 455,
+    "total": 15698
+  },
+  "statistics": {
+    "avg_daily_admissions": 7.302433904087122,
+    "max_daily_admissions": 69,
+    "total_admissions": 111311,
+    "avg_total_beds": 2700.0,
+    "avg_icu_beds": 270.0
+  }
+}
