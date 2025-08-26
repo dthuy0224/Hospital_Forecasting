@@ -1,0 +1,23 @@
+{
+  "Ho Chi Minh City": {
+    "best_model": "prophet",
+    "best_mape": 9.579741974873244,
+    "all_models": {
+      "prophet": 9.579741974873244
+    }
+  },
+  "Ha Noi": {
+    "best_model": "prophet",
+    "best_mape": 9.014372786100365,
+    "all_models": {
+      "prophet": 9.014372786100365
+    }
+  },
+  "Da Nang": {
+    "best_model": "prophet",
+    "best_mape": 9.290051687492342,
+    "all_models": {
+      "prophet": 9.290051687492342
+    }
+  }
+}

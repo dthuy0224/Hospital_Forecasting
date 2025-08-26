@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-08-21T10:56:55.527955",
+  "generated_at": "2025-08-26T12:35:24.959936",
   "date_range": {
     "start": "2024-01-01",
     "end": "2024-03-31",
@@ -38,14 +38,14 @@
     ]
   },
   "records": {
-    "admissions": 15243,
+    "admissions": 15266,
     "capacity": 455,
-    "total": 15698
+    "total": 15721
   },
   "statistics": {
-    "avg_daily_admissions": 7.302433904087122,
-    "max_daily_admissions": 69,
-    "total_admissions": 111311,
+    "avg_daily_admissions": 7.356019913533342,
+    "max_daily_admissions": 63,
+    "total_admissions": 112297,
     "avg_total_beds": 2700.0,
     "avg_icu_beds": 270.0
   }

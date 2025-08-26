@@ -1,0 +1,42 @@
+{
+  "optimization_date": "2025-08-26T12:32:46.086952",
+  "total_locations": 5,
+  "summary": {
+    "average_mape": 9.869829789044307,
+    "best_location": "Ho Chi Minh City",
+    "worst_location": "Hai Phong",
+    "models_improved": 5
+  },
+  "location_details": {
+    "Can Tho": {
+      "mape": 10.030601581519193,
+      "model_type": "ensemble",
+      "data_points": 91,
+      "improvement_needed": "False"
+    },
+    "Da Nang": {
+      "mape": 9.973848080985851,
+      "model_type": "ensemble",
+      "data_points": 91,
+      "improvement_needed": "False"
+    },
+    "Ha Noi": {
+      "mape": 9.599692842760133,
+      "model_type": "ensemble",
+      "data_points": 91,
+      "improvement_needed": "False"
+    },
+    "Hai Phong": {
+      "mape": 11.389574879423318,
+      "model_type": "ensemble",
+      "data_points": 91,
+      "improvement_needed": "False"
+    },
+    "Ho Chi Minh City": {
+      "mape": 8.355431560533031,
+      "model_type": "ensemble",
+      "data_points": 91,
+      "improvement_needed": "False"
+    }
+  }
+}

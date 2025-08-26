@@ -1,0 +1,42 @@
+{
+  "comparison_date": "2025-08-26T12:37:27.530187",
+  "total_locations": 3,
+  "models_compared": [
+    "prophet"
+  ],
+  "summary": {
+    "average_performance": {
+      "prophet": 9.294722149488651,
+      "arima": Infinity
+    },
+    "best_model_overall": "prophet",
+    "best_models_count": {
+      "prophet": 3,
+      "arima": 0
+    },
+    "locations_with_improvement": 3
+  },
+  "location_details": {
+    "Ho Chi Minh City": {
+      "best_model": "prophet",
+      "best_mape": 9.579741974873244,
+      "all_models_mape": {
+        "prophet": 9.579741974873244
+      }
+    },
+    "Ha Noi": {
+      "best_model": "prophet",
+      "best_mape": 9.014372786100365,
+      "all_models_mape": {
+        "prophet": 9.014372786100365
+      }
+    },
+    "Da Nang": {
+      "best_model": "prophet",
+      "best_mape": 9.290051687492342,
+      "all_models_mape": {
+        "prophet": 9.290051687492342
+      }
+    }
+  }
+}

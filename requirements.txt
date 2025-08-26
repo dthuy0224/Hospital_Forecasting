@@ -44,5 +44,5 @@ kaggle
 datasets
 
 # Optional Cloud Services
-# google-cloud-bigquery>=3.13.0
-# boto3>=1.34.0
+google-cloud-bigquery>=3.13.0
+boto3>=1.34.0

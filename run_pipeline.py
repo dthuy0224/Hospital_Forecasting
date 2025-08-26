@@ -31,6 +31,8 @@ class PipelineRunner:
             ("📊 Data Collection", self.run_data_collection),
             ("🧹 Data Processing", self.run_data_processing),
             ("🤖 Model Training", self.run_model_training),
+            ("🔍 Model Optimization", self.run_model_optimization),
+            ("⚖️ Model Comparison", self.run_model_comparison),
             ("📈 Dashboard Launch", self.launch_dashboard)
         ]
         
@@ -63,6 +65,14 @@ class PipelineRunner:
     def run_model_training(self):
         """Run model training"""
         subprocess.check_call([sys.executable, "src/models/prophet_forecasting.py"])
+    
+    def run_model_optimization(self):
+        """Run model optimization"""
+        subprocess.check_call([sys.executable, "src/models/model_optimization.py"])
+    
+    def run_model_comparison(self):
+        """Run model comparison"""
+        subprocess.check_call([sys.executable, "src/models/model_comparison.py"])
     
     def launch_dashboard(self):
         """Launch Streamlit dashboard"""
@@ -117,11 +127,13 @@ Usage:
     python run_pipeline.py --help          # Show this help
 
 Pipeline Steps:
-    0. 🔧 Setup
-    1. 📊 Data Collection  
-    2. 🧹 Data Processing
-    3. 🤖 Model Training
-    4. 📈 Dashboard Launch
+     0. 🔧 Setup
+     1. 📊 Data Collection  
+     2. 🧹 Data Processing
+     3. 🤖 Model Training
+     4. 🔍 Model Optimization
+     5. ⚖️ Model Comparison
+     6. 📈 Dashboard Launch
 
 Requirements:
     - Python 3.8+

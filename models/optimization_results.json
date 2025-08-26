@@ -1,0 +1,37 @@
+{
+  "Can Tho": {
+    "metrics": {
+      "mape": 10.030601581519193
+    },
+    "model_type": "ensemble",
+    "data_points": 91
+  },
+  "Da Nang": {
+    "metrics": {
+      "mape": 9.973848080985851
+    },
+    "model_type": "ensemble",
+    "data_points": 91
+  },
+  "Ha Noi": {
+    "metrics": {
+      "mape": 9.599692842760133
+    },
+    "model_type": "ensemble",
+    "data_points": 91
+  },
+  "Hai Phong": {
+    "metrics": {
+      "mape": 11.389574879423318
+    },
+    "model_type": "ensemble",
+    "data_points": 91
+  },
+  "Ho Chi Minh City": {
+    "metrics": {
+      "mape": 8.355431560533031
+    },
+    "model_type": "ensemble",
+    "data_points": 91
+  }
+}
