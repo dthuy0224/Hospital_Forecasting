@@ -37,7 +37,7 @@ def check_module(module_name, import_name=None):
         elif import_name == 'kagglehub':
             import kagglehub
             version = kagglehub.__version__
-            print(f"✅ {module_name} ({version}) - Thư viện mới cho Kaggle models & datasets")
+            print(f"{module_name} {version}) - API ok")
             return True, kagglehub
         elif import_name == 'sodapy':
             import sodapy

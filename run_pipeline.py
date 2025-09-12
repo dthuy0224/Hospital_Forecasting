@@ -33,6 +33,7 @@ class PipelineRunner:
             ("🤖 Model Training", self.run_model_training),
             ("🔍 Model Optimization", self.run_model_optimization),
             ("⚖️ Model Comparison", self.run_model_comparison),
+            ("🔄 Backtesting", self.run_backtesting),
             ("📈 Dashboard Launch", self.launch_dashboard)
         ]
         
@@ -73,6 +74,10 @@ class PipelineRunner:
     def run_model_comparison(self):
         """Run model comparison"""
         subprocess.check_call([sys.executable, "src/models/model_comparison.py"])
+    
+    def run_backtesting(self):
+        """Run backtesting"""
+        subprocess.check_call([sys.executable, "src/models/backtesting.py"])
     
     def launch_dashboard(self):
         """Launch Streamlit dashboard"""
@@ -133,7 +138,8 @@ Pipeline Steps:
      3. 🤖 Model Training
      4. 🔍 Model Optimization
      5. ⚖️ Model Comparison
-     6. 📈 Dashboard Launch
+     6. 🔄 Backtesting
+     7. 📈 Dashboard Launch
 
 Requirements:
     - Python 3.8+

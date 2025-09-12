@@ -128,7 +128,7 @@ class ModelComparator:
             p_values = range(0, 2)
             d_values = range(0, 2)
             q_values = range(0, 2)
-            
+    
             for p in p_values:
                 for d in d_values:
                     for q in q_values:
