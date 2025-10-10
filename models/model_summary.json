@@ -1,14 +1,12 @@
 {
-  "models_trained": 5,
-  "forecasts_generated": 5,
-  "average_accuracy": 10.271890619799006,
+  "models_trained": 3,
+  "forecasts_generated": 3,
+  "average_accuracy": 92.17186916929876,
   "locations": [
-    "Can Tho",
-    "Da Nang",
+    "Ho Chi Minh City",
     "Ha Noi",
-    "Hai Phong",
-    "Ho Chi Minh City"
+    "Da Nang"
   ],
   "forecast_horizon": 14,
-  "generated_at": "2025-08-26T08:25:58.608970"
+  "generated_at": "2025-10-10T13:00:24.817409"
 }

@@ -112,7 +112,8 @@ class AdvancedFeatureEngineer:
                             df.iloc[i, df.columns.get_loc('pre_holiday')] = 1
                         elif days_offset > 0:  # After holiday
                             df.iloc[i, df.columns.get_loc('post_holiday')] = 1
-            
+                        elif days_offset == 0:  # On holiday
+                            df.iloc[i, df.columns.get_loc('on_holiday')] = 1
             # Add Tet season effect (broader period)
             df['is_tet_season'] = 0
             for tet_date_str in self.vietnamese_holidays['tet_lunar_new_year']:

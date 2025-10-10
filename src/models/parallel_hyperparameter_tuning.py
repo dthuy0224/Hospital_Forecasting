@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""
-Parallel Hyperparameter Tuning Script for Hospital Forecasting Project
-Implements advanced hyperparameter optimization with parallel processing
-"""
-
 import pandas as pd
 import numpy as np
 import json
@@ -12,8 +6,6 @@ import os
 import time
 from datetime import datetime, timedelta
 from typing import Dict, List, Tuple, Any, Optional
-from concurrent.futures import ProcessPoolExecutor, as_completed
-from multiprocessing import cpu_count
 import itertools
 from prophet import Prophet
 from prophet.diagnostics import cross_validation, performance_metrics
@@ -26,34 +18,33 @@ warnings.filterwarnings('ignore')
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-class ParallelHyperparameterTuner:
-    """Advanced parallel hyperparameter tuning for Prophet models"""
+class SimplifiedHyperparameterTuner:
+    """Simplified hyperparameter tuning for Prophet models (sequential processing)"""
     
-    def __init__(self, data_path: str = "data/processed/enhanced_forecast_data.csv"):
+    def __init__(self, data_path: str = "data/processed/combined_forecast_data.csv"):
         self.data_path = data_path
         self.results = {}
         self.best_params = {}
         self.optimization_history = []
         
-        # Extended hyperparameter search space
+        # Simplified hyperparameter search space (reduced for faster execution)
         self.param_grid = {
             'seasonality_mode': ['additive', 'multiplicative'],
-            'changepoint_prior_scale': [0.001, 0.01, 0.05, 0.1, 0.5],
-            'seasonality_prior_scale': [0.01, 0.1, 1.0, 10.0],
-            'holidays_prior_scale': [0.01, 0.1, 1.0, 10.0],
-            'n_changepoints': [15, 25, 35, 50],
-            'changepoint_range': [0.8, 0.85, 0.9, 0.95],
+            'changepoint_prior_scale': [0.01, 0.05, 0.1],
+            'seasonality_prior_scale': [0.1, 1.0, 10.0],
+            'holidays_prior_scale': [0.1, 1.0, 10.0],
+            'n_changepoints': [15, 25, 35],
+            'changepoint_range': [0.8, 0.9, 0.95],
             'yearly_seasonality': [True, False],
             'weekly_seasonality': [True, False],
             'daily_seasonality': [False],  # Keep False for daily data
-            'interval_width': [0.80, 0.85, 0.90, 0.95]
+            'interval_width': [0.80, 0.90, 0.95]
         }
         
-        # Advanced seasonality configurations
+        # Simplified seasonality configurations
         self.custom_seasonalities = [
-            {'name': 'monthly', 'period': 30.5, 'fourier_order': [3, 5, 8]},
-            {'name': 'quarterly', 'period': 91.25, 'fourier_order': [3, 5, 8]},
-            {'name': 'biannual', 'period': 182.5, 'fourier_order': [3, 5]}
+            {'name': 'monthly', 'period': 30.5, 'fourier_order': [3, 5]},
+            {'name': 'quarterly', 'period': 91.25, 'fourier_order': [3, 5]}
         ]
         
     def load_data(self) -> Dict[str, pd.DataFrame]:
@@ -73,14 +64,12 @@ class ParallelHyperparameterTuner:
                 # Prepare Prophet format with additional regressors
                 prophet_data = location_data[['ds', 'y']].copy()
                 
-                # Add important regressors from enhanced features
-                important_regressors = [
-                    'is_major_holiday', 'is_tet_season', 'is_weekend',
-                    'is_dry_season', 'is_rainy_season', 'population',
-                    'healthcare_capacity_factor', 'y_lag_7', 'y_rolling_mean_7'
+                # Add basic regressors (only if they exist in the data)
+                basic_regressors = [
+                    'is_weekend', 'is_holiday', 'month', 'quarter'
                 ]
                 
-                for regressor in important_regressors:
+                for regressor in basic_regressors:
                     if regressor in location_data.columns:
                         prophet_data[regressor] = location_data[regressor]
                 
@@ -129,29 +118,33 @@ class ParallelHyperparameterTuner:
             logger.error(f"❌ Error creating Prophet model: {str(e)}")
             raise
     
-    def evaluate_single_configuration(self, args: Tuple) -> Dict[str, Any]:
+    def evaluate_single_configuration(self, location: str, data: pd.DataFrame, 
+                                    params: Dict[str, Any], seasonality_config: List[Dict], 
+                                    config_id: int) -> Dict[str, Any]:
         """Evaluate a single hyperparameter configuration"""
-        location, data, params, seasonality_config, config_id = args
-        
         try:
             # Create model with configuration
             model = self.create_prophet_model_with_config(params, seasonality_config)
             
-            # Add regressors
-            regressor_cols = [col for col in data.columns if col not in ['ds', 'y']]
-            for regressor in regressor_cols:
-                model.add_regressor(regressor)
+            # Add regressors (limit to basic ones to avoid issues)
+            basic_regressors = [
+                'is_weekend', 'is_holiday', 'month', 'quarter'
+            ]
+            
+            for regressor in basic_regressors:
+                if regressor in data.columns:
+                    model.add_regressor(regressor)
             
             # Fit model
             model.fit(data)
             
-            # Perform cross-validation
+            # Perform cross-validation with simplified parameters
             cv_results = cross_validation(
                 model, 
-                initial='180 days', 
-                period='30 days', 
-                horizon='14 days',
-                parallel='processes'
+                initial='120 days',  # Reduced for faster execution
+                period='14 days',    # Reduced
+                horizon='7 days',    # Reduced
+                parallel=None        # Disable parallel processing
             )
             
             # Calculate performance metrics
@@ -175,6 +168,7 @@ class ParallelHyperparameterTuner:
             return metrics
             
         except Exception as e:
+            logger.warning(f"⚠️ Configuration {config_id} failed for {location}: {str(e)}")
             return {
                 'location': location,
                 'config_id': config_id,
@@ -183,10 +177,9 @@ class ParallelHyperparameterTuner:
                 'mape': float('inf')
             }
     
-    def generate_parameter_combinations(self, max_combinations: int = 200) -> List[Tuple]:
+    def generate_parameter_combinations(self, max_combinations: int = 50) -> List[Tuple]:
         """Generate parameter combinations for grid search"""
         logger.info(f"🔧 Generating parameter combinations (max: {max_combinations})...")
-        
         try:
             # Generate base parameter combinations
             param_combinations = list(ParameterGrid(self.param_grid))
@@ -247,9 +240,9 @@ class ParallelHyperparameterTuner:
             logger.error(f"❌ Error generating parameter combinations: {str(e)}")
             raise
     
-    def run_parallel_optimization(self, max_workers: Optional[int] = None) -> Dict[str, Any]:
-        """Run parallel hyperparameter optimization"""
-        logger.info("🚀 Starting parallel hyperparameter optimization...")
+    def run_sequential_optimization(self) -> Dict[str, Any]:
+        """Run sequential hyperparameter optimization"""
+        logger.info("🚀 Starting sequential hyperparameter optimization...")
         
         try:
             # Load data
@@ -258,11 +251,7 @@ class ParallelHyperparameterTuner:
             # Generate parameter combinations
             param_combinations = self.generate_parameter_combinations()
             
-            # Set up parallel processing
-            if max_workers is None:
-                max_workers = min(cpu_count() - 1, 8)  # Leave one core free, max 8
-            
-            logger.info(f"💻 Using {max_workers} parallel workers")
+            logger.info(f"💻 Running sequential optimization")
             
             # Prepare evaluation tasks
             evaluation_tasks = []
@@ -273,51 +262,55 @@ class ParallelHyperparameterTuner:
             
             logger.info(f"📋 Total evaluation tasks: {len(evaluation_tasks)}")
             
-            # Run parallel evaluation
+            # Run sequential evaluation
             results = []
             completed_tasks = 0
             start_time = time.time()
             
-            with ProcessPoolExecutor(max_workers=max_workers) as executor:
-                # Submit all tasks
-                future_to_task = {
-                    executor.submit(self.evaluate_single_configuration, task): task 
-                    for task in evaluation_tasks
-                }
+            for task in evaluation_tasks:
+                location, data, params, seasonality_config, config_id = task
                 
-                # Collect results as they complete
-                for future in as_completed(future_to_task):
-                    try:
-                        result = future.result()
-                        results.append(result)
-                        completed_tasks += 1
+                try:
+                    result = self.evaluate_single_configuration(
+                        location, data, params, seasonality_config, config_id
+                    )
+                    results.append(result)
+                    completed_tasks += 1
+                    
+                    # Progress reporting
+                    if completed_tasks % 10 == 0 or completed_tasks == len(evaluation_tasks):
+                        elapsed_time = time.time() - start_time
+                        avg_time_per_task = elapsed_time / completed_tasks
+                        remaining_tasks = len(evaluation_tasks) - completed_tasks
+                        eta = remaining_tasks * avg_time_per_task
                         
-                        # Progress reporting
-                        if completed_tasks % 50 == 0 or completed_tasks == len(evaluation_tasks):
-                            elapsed_time = time.time() - start_time
-                            avg_time_per_task = elapsed_time / completed_tasks
-                            remaining_tasks = len(evaluation_tasks) - completed_tasks
-                            eta = remaining_tasks * avg_time_per_task
-                            
-                            logger.info(
-                                f"📈 Progress: {completed_tasks}/{len(evaluation_tasks)} "
-                                f"({completed_tasks/len(evaluation_tasks)*100:.1f}%) "
-                                f"ETA: {eta/60:.1f}m"
-                            )
-                            
-                    except Exception as e:
-                        logger.error(f"❌ Task failed: {str(e)}")
+                        logger.info(
+                            f"📈 Progress: {completed_tasks}/{len(evaluation_tasks)} "
+                            f"({completed_tasks/len(evaluation_tasks)*100:.1f}%) "
+                            f"ETA: {eta/60:.1f}m"
+                        )
+                        
+                except Exception as e:
+                    logger.error(f"❌ Task failed: {str(e)}")
+                    results.append({
+                        'location': location,
+                        'config_id': config_id,
+                        'params': params,
+                        'error': str(e),
+                        'mape': float('inf')
+                    })
+                    completed_tasks += 1
             
             # Process results
             self.results = self.process_optimization_results(results)
             
             total_time = time.time() - start_time
-            logger.info(f"✅ Parallel optimization completed in {total_time/60:.1f} minutes")
+            logger.info(f"✅ Sequential optimization completed in {total_time/60:.1f} minutes")
             
             return self.results
             
         except Exception as e:
-            logger.error(f"❌ Parallel optimization failed: {str(e)}")
+            logger.error(f"❌ Sequential optimization failed: {str(e)}")
             raise
     
     def process_optimization_results(self, results: List[Dict]) -> Dict[str, Any]:
@@ -524,16 +517,16 @@ class ParallelHyperparameterTuner:
             return {}
 
 def main():
-    """Main function to run parallel hyperparameter optimization"""
-    logger.info("🏥 Hospital Forecasting Parallel Hyperparameter Optimization Started")
+    """Main function to run sequential hyperparameter optimization"""
+    logger.info("🏥 Hospital Forecasting Sequential Hyperparameter Optimization Started")
     logger.info("=" * 70)
     
     try:
         # Initialize optimizer
-        optimizer = ParallelHyperparameterTuner()
+        optimizer = SimplifiedHyperparameterTuner()
         
-        # Run parallel optimization
-        results = optimizer.run_parallel_optimization()
+        # Run sequential optimization
+        results = optimizer.run_sequential_optimization()
         
         # Save results
         optimizer.save_optimization_results(results)
@@ -551,11 +544,11 @@ def main():
         logger.info("\n🏆 BEST PARAMETERS BY LOCATION:")
         for location, result in best_params.items():
             logger.info(f"{location}: MAPE = {result['best_mape']:.4f}%")
-        
-        logger.info("✅ Parallel hyperparameter optimization completed successfully!")
+            
+        logger.info("✅ Sequential hyperparameter optimization completed successfully!")
         
     except Exception as e:
-        logger.error(f"❌ Parallel hyperparameter optimization failed: {str(e)}")
+        logger.error(f"❌ Sequential hyperparameter optimization failed: {str(e)}")
         raise
 
 if __name__ == "__main__":

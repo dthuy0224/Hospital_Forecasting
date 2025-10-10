@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\data\processed\aggregated_admissions.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\data\processed\combined_forecast_data.csv">
           <value>
             <Attribute>
@@ -11,6 +18,13 @@
           </value>
         </entry>
         <entry key="\data\processed\forecast_hai_phong.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data\processed\forecast_ho_chi_minh_city.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -32,13 +46,6 @@
           </value>
         </entry>
         <entry key="\models\forecasts\forecast_can_tho.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\models\forecasts_comparison\forecast_can_tho.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

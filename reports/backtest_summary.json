@@ -1,0 +1,33 @@
+{
+  "backtest_date": "2025-09-12T16:19:36.885787",
+  "total_locations": 3,
+  "overall_metrics": {
+    "avg_cv_mape": 0.19629042735336968,
+    "best_cv_mape": 0.17735387817358073,
+    "worst_cv_mape": 0.21550256458775996,
+    "avg_rolling_mape": 22.78985242125518,
+    "best_rolling_mape": 18.944853386361434,
+    "worst_rolling_mape": 27.838592237420674,
+    "avg_directional_accuracy": 57.02811244979919
+  },
+  "location_rankings": {
+    "Ho Chi Minh City": {
+      "avg_mape": 9.580177975474596,
+      "directional_accuracy": 51.80722891566265,
+      "total_predictions": 84
+    },
+    "Ha Noi": {
+      "avg_mape": 10.88173275907851,
+      "directional_accuracy": 63.85542168674698,
+      "total_predictions": 84
+    },
+    "Da Nang": {
+      "avg_mape": 14.017303538359721,
+      "directional_accuracy": 55.42168674698795,
+      "total_predictions": 84
+    }
+  },
+  "recommendations": [],
+  "best_performing_location": "Ho Chi Minh City",
+  "worst_performing_location": "Da Nang"
+}
