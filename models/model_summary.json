@@ -1,12 +1,24 @@
 {
-  "models_trained": 3,
-  "forecasts_generated": 3,
-  "average_accuracy": 92.17186916929876,
+  "total_models_trained": 3,
   "locations": [
     "Ho Chi Minh City",
     "Ha Noi",
     "Da Nang"
   ],
+  "average_mape": 8.830880199520557,
+  "average_accuracy": 62.831050228310495,
   "forecast_horizon": 14,
-  "generated_at": "2025-10-10T13:00:24.817409"
+  "optimization_date": "2025-10-11T22:22:09.055210",
+  "model_type": "Prophet (Optimized)",
+  "hyperparameters": {
+    "seasonality_mode": "additive",
+    "yearly_seasonality": true,
+    "weekly_seasonality": true,
+    "daily_seasonality": false,
+    "changepoint_prior_scale": 0.05,
+    "seasonality_prior_scale": 10.0,
+    "holidays_prior_scale": 10.0,
+    "changepoint_range": 0.9,
+    "interval_width": 0.95
+  }
 }

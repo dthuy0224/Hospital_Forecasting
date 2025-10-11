@@ -1,35 +1,44 @@
 {
   "Ho Chi Minh City": {
     "location": "Ho Chi Minh City",
-    "mae": 6.767716322371441,
-    "mse": 82.68128223529192,
-    "rmse": 9.09292484491607,
-    "mape": 8.272126969173437,
-    "accuracy": 91.72787303082656,
-    "test_days": 30,
-    "mean_actual": 86.86666666666666,
-    "mean_predicted": 86.15138558574269
+    "mape": 8.578403645308184,
+    "mae": 7.360141162137138,
+    "rmse": 9.230723704339729,
+    "accuracy": 64.10958904109589,
+    "bias": -1.180867766947813e-05,
+    "relative_bias": -1.2574484382267014e-05,
+    "training_points": 366,
+    "forecast_days": 14,
+    "mean_actual": 93.90983606557377,
+    "mean_predicted": 93.9098242568961,
+    "optimization_date": "2025-10-11T22:22:08.620214"
   },
   "Ha Noi": {
     "location": "Ha Noi",
-    "mae": 6.019248156797726,
-    "mse": 53.84906115949718,
-    "rmse": 7.338191954391571,
-    "mape": 7.3126411216382845,
-    "accuracy": 92.68735887836172,
-    "test_days": 30,
-    "mean_actual": 86.5,
-    "mean_predicted": 86.8543523768996
+    "mape": 8.841922159381326,
+    "mae": 7.886812686850749,
+    "rmse": 9.807456205858026,
+    "accuracy": 62.19178082191781,
+    "bias": -0.011784693646831101,
+    "relative_bias": -0.012450416750108776,
+    "training_points": 366,
+    "forecast_days": 14,
+    "mean_actual": 94.65300546448087,
+    "mean_predicted": 94.64122077083404,
+    "optimization_date": "2025-10-11T22:22:08.837208"
   },
   "Da Nang": {
     "location": "Da Nang",
-    "mae": 6.975214270347075,
-    "mse": 73.2473165724544,
-    "rmse": 8.558464615364977,
-    "mape": 7.899624401291979,
-    "accuracy": 92.10037559870803,
-    "test_days": 30,
-    "mean_actual": 90.56666666666666,
-    "mean_predicted": 89.9585981028279
+    "mape": 9.07231479387216,
+    "mae": 7.631151380653292,
+    "rmse": 9.563358473867554,
+    "accuracy": 62.19178082191781,
+    "bias": -0.013825455250426444,
+    "relative_bias": -0.014777083262728377,
+    "training_points": 366,
+    "forecast_days": 14,
+    "mean_actual": 93.56010928961749,
+    "mean_predicted": 93.54628383436706,
+    "optimization_date": "2025-10-11T22:22:09.039187"
   }
 }
