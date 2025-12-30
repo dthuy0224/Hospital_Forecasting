@@ -1,0 +1,35 @@
+{
+  "Ludhiana Central": {
+    "location": "Ludhiana Central",
+    "mae": 0.09713643044233322,
+    "rmse": 0.11979456739092559,
+    "mape": 10.893760408673968,
+    "smape": 111.97056069304618,
+    "accuracy": 89.10623959132603,
+    "mean_actual": 0.4666666666666667,
+    "mean_predicted": 0.5313607454299927,
+    "model": "XGBoost"
+  },
+  "Ludhiana South": {
+    "location": "Ludhiana South",
+    "mae": 0.0665983036160469,
+    "rmse": 0.09925320000948783,
+    "mape": 39.505767822265625,
+    "smape": 194.97433800937745,
+    "accuracy": 60.494232177734375,
+    "mean_actual": 0.03333333333333333,
+    "mean_predicted": 0.033269673585891724,
+    "model": "XGBoost"
+  },
+  "Punjab Urban": {
+    "location": "Punjab Urban",
+    "mae": 0.09303348511457443,
+    "rmse": 0.11034340110913793,
+    "mape": 10.359381352152143,
+    "smape": 111.88789921303291,
+    "accuracy": 89.64061864784786,
+    "mean_actual": 0.4666666666666667,
+    "mean_predicted": 0.43782398104667664,
+    "model": "XGBoost"
+  }
+}

@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""
-Streamlit Dashboard for Hospital Demand Forecasting
-Interactive web application to visualize forecasts and insights
-"""
-
 import streamlit as st
 import pandas as pd
 import numpy as np

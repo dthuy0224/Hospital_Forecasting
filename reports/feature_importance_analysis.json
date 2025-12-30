@@ -1,0 +1,57 @@
+{
+  "analysis_date": "2025-12-29T13:47:39.524185",
+  "top_correlated_features": {
+    "y_ema_0.5": 0.9341967735223687,
+    "y_ema_0.3": 0.8682541986754438,
+    "y_rolling_mean_7": 0.7659505815361948,
+    "y_ema_0.1": 0.72972519202335,
+    "y_rolling_max_7": 0.7115643527400981,
+    "y_rolling_mean_14": 0.649977912491646,
+    "y_lag_1": 0.6196355213244192,
+    "y_rolling_max_14": 0.5993064201563556,
+    "y_rolling_min_7": 0.581433240057216,
+    "y_trend_30d": 0.5748098469091574,
+    "y_rolling_mean_30": 0.5602246773792172,
+    "y_trend_7d": 0.51933179037733,
+    "y_volatility_7d": 0.49632051009974903,
+    "y_rolling_std_7": 0.49632051009974903,
+    "y_rolling_max_30": 0.4853047862366321,
+    "y_rolling_std_14": 0.4554794331908582,
+    "y_lag_7": 0.4463285906523382,
+    "y_rolling_min_14": 0.4332923912096913,
+    "y_volatility_30d": 0.42221021365546224,
+    "y_rolling_std_30": 0.42221021365546224
+  },
+  "top_mutual_info_features": {
+    "y_ema_0.5": 1.2351382819348942,
+    "y_ema_0.3": 0.9114680928053929,
+    "y_rolling_max_7": 0.6981460489754552,
+    "y_rolling_mean_7": 0.6397349375954011,
+    "y_rolling_min_7": 0.5967524303347918,
+    "y_lag_1": 0.5474769637447894,
+    "y_ema_0.1": 0.5056571777066612,
+    "y_rolling_max_14": 0.4666577351299699,
+    "y_rolling_mean_14": 0.4295296893089384,
+    "y_trend_30d": 0.34342867630930396,
+    "y_rolling_min_14": 0.3345359220017885,
+    "y_rolling_mean_30": 0.3209860709068275,
+    "y_volatility_30d": 0.3150322540464616,
+    "y_trend_7d": 0.31391128965820236,
+    "y_rolling_std_30": 0.3075582887517374,
+    "y_rolling_std_14": 0.28725853844931226,
+    "y_rolling_max_30": 0.28072140585324323,
+    "y_rolling_std_7": 0.2540129991511293,
+    "y_volatility_7d": 0.23950440150671248,
+    "y_lag_7": 0.2049588655779191
+  },
+  "feature_statistics": {
+    "total_features": 97,
+    "highly_correlated": 22,
+    "moderately_correlated": 18,
+    "low_correlated": 25
+  },
+  "recommendations": [
+    "Found 12 highly correlated features (>0.5) - consider for model training",
+    "Found 21 very low correlated features (<0.05) - consider removing"
+  ]
+}

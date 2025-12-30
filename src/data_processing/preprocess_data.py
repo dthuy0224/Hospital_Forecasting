@@ -206,11 +206,60 @@ class DataPreprocessor:
             prophet_data['month'] = location_data['month'].values
             prophet_data['disease_severity'] = location_data['disease_severity'].values
             
+            # Fill date gaps to create continuous time series
+            prophet_data = self.fill_date_gaps(prophet_data)
+            
             forecast_data[location] = prophet_data
         
         logger.info(f"✅ Prepared forecast data for {len(forecast_data)} locations")
         
         return forecast_data
+    
+    def fill_date_gaps(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Fill missing dates to create continuous time series for Prophet"""
+        df = df.copy()
+        df['ds'] = pd.to_datetime(df['ds'])
+        
+        # Get date range
+        min_date = df['ds'].min()
+        max_date = df['ds'].max()
+        
+        # Create complete date range
+        full_date_range = pd.date_range(start=min_date, end=max_date, freq='D')
+        
+        # Check if gaps exist
+        original_days = len(df)
+        expected_days = len(full_date_range)
+        
+        if original_days < expected_days:
+            logger.info(f"   Filling {expected_days - original_days} missing dates...")
+            
+            # Create full date dataframe
+            full_df = pd.DataFrame({'ds': full_date_range})
+            
+            # Merge with original data
+            df = full_df.merge(df, on='ds', how='left')
+            
+            # Fill missing values with interpolation for 'y'
+            df['y'] = df['y'].interpolate(method='linear')
+            
+            # For remaining NaNs at start, use backfill
+            df['y'] = df['y'].bfill()
+            
+            # Round to integers (admissions are whole numbers)
+            df['y'] = df['y'].round().astype(int)
+            
+            # Fill other columns
+            df['is_weekend'] = df['ds'].dt.dayofweek.isin([5, 6]).astype(int)
+            df['month'] = df['ds'].dt.month
+            
+            # Fill disease_severity with forward fill then mean
+            if 'disease_severity' in df.columns:
+                df['disease_severity'] = df['disease_severity'].ffill().bfill()
+                if df['disease_severity'].isna().any():
+                    df['disease_severity'] = df['disease_severity'].fillna(df['disease_severity'].mean())
+        
+        return df
     
     def save_processed_data(self, data: Dict[str, pd.DataFrame], aggregated_df: pd.DataFrame):
         """Save processed data to files"""

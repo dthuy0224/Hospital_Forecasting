@@ -1,6 +1,6 @@
 # Hospital Forecasting Configuration
 
-# Data Sources
+# Data Sources (Kaggle)
 data_sources:
   covid_data:
     url: "https://disease.sh/v3/covid-19/historical"
@@ -8,6 +8,15 @@ data_sources:
   vietnam_health:
     url: "https://api.data.gov.vn/"
     format: "json"
+
+# Kaggle Configuration
+kaggle:
+  datasets:
+    hospital_admissions:
+      name: "ashishsahani/hospital-admissions-data"
+      file: "HDHI Admission data.csv"
+      description: "HDHI Hospital Admissions 2017-2019 (India)"
+  cache_path: "data/kaggle_cache"
 
 # Database Configuration
 database:
@@ -28,6 +37,11 @@ models:
     daily_seasonality: false
     changepoint_prior_scale: 0.1
     seasonality_prior_scale: 1.0
+  xgboost:
+    n_estimators: 200
+    max_depth: 6
+    learning_rate: 0.1
+    use_optuna: true
   arima:
     auto_arima: true
     seasonal: true
@@ -42,10 +56,10 @@ dashboard:
   title: "Hospital Demand Forecasting"
   refresh_interval: 3600  # seconds
   
-# Locations
+# Locations (Kaggle HDHI data)
 locations:
-  - "Ho Chi Minh City"
-  - "Ha Noi" 
-  - "Da Nang"
-  - "Can Tho"
-  - "Hai Phong"
+  - "Ludhiana Central"
+  - "Ludhiana South"
+  - "Ludhiana North"
+  - "Punjab Rural"
+  - "Punjab Urban"

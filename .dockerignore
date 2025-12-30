@@ -1,0 +1,60 @@
+# ============================================
+# Docker Ignore File
+# ============================================
+
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv
+venv/
+ENV/
+.eggs
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Logs
+*.log
+logs/
+
+# Local config
+.env
+.env.local
+kaggle.json
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Test files
+tests/
+htmlcov/
+.coverage
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Large files that should be mounted as volumes
+# data/
+# models/

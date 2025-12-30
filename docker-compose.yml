@@ -1,0 +1,83 @@
+# ============================================
+# Hospital Forecasting - Docker Compose
+# Complete stack with API, Dashboard, and optional services
+# ============================================
+
+version: '3.8'
+
+services:
+  # Main API Service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hospital-forecasting-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./reports:/app/reports
+    environment:
+      - PYTHONPATH=/app
+      - LOG_LEVEL=INFO
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - hospital-network
+
+  # Streamlit Dashboard
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hospital-forecasting-dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./reports:/app/reports
+    environment:
+      - PYTHONPATH=/app
+      - API_URL=http://api:8000
+    command: ["streamlit", "run", "src/visualization/streamlit_dashboard.py", "--server.port", "8501", "--server.address", "0.0.0.0"]
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - hospital-network
+
+  # Data Pipeline Runner (one-time job)
+  pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hospital-forecasting-pipeline
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./reports:/app/reports
+      - ./config:/app/config
+    environment:
+      - PYTHONPATH=/app
+      - KAGGLE_CONFIG_DIR=/app
+    command: ["python", "run_pipeline.py", "--data-source", "kaggle"]
+    profiles:
+      - pipeline
+    networks:
+      - hospital-network
+
+networks:
+  hospital-network:
+    driver: bridge
+
+# Volumes for persistence
+volumes:
+  data:
+  models:
+  reports:

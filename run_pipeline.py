@@ -26,6 +26,10 @@ class PipelineRunner:
     """Complete pipeline orchestrator"""
     
     def __init__(self):
+        """
+        Initialize pipeline runner.
+        Uses Kaggle real data source.
+        """
         self.steps = [
             ("🔧 Setup", self.run_setup),
             ("📊 Data Collection", self.run_data_collection),
@@ -56,8 +60,9 @@ class PipelineRunner:
         subprocess.check_call([sys.executable, "scripts/setup.py"])
     
     def run_data_collection(self):
-        """Run data collection"""
-        subprocess.check_call([sys.executable, "src/data_ingestion/collect_sample_data.py"])
+        """Run data collection from Kaggle"""
+        logger.info("📥 Collecting data from Kaggle...")
+        subprocess.check_call([sys.executable, "src/data_ingestion/kaggle_data_collector.py"])
     
     def run_data_processing(self):
         """Run data processing"""
@@ -145,6 +150,7 @@ Requirements:
     - Python 3.8+
     - All dependencies in requirements.txt
     - Sufficient disk space (>100MB)
+    - Kaggle API credentials (kaggle.json in ~/.kaggle/)
 
 Output:
     - Trained models in models/ directory
@@ -157,16 +163,24 @@ def main():
     # Parse command line arguments
     start_from = 0
     
-    if len(sys.argv) > 1:
-        if sys.argv[1] in ['--help', '-h']:
+    i = 1
+    while i < len(sys.argv):
+        arg = sys.argv[i]
+        
+        if arg in ['--help', '-h']:
             print_usage()
             return
-        elif sys.argv[1] == '--start-from' and len(sys.argv) > 2:
+        elif arg == '--start-from' and i + 1 < len(sys.argv):
             try:
-                start_from = int(sys.argv[2])
+                start_from = int(sys.argv[i + 1])
+                i += 1
             except ValueError:
                 logger.error("Invalid start-from value. Must be an integer.")
                 return
+        
+        i += 1
+    
+    logger.info("📊 Using Kaggle real data")
     
     # Initialize pipeline
     runner = PipelineRunner()

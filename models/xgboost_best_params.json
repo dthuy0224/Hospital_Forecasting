@@ -1,0 +1,32 @@
+{
+  "Ludhiana Central": {
+    "objective": "reg:squarederror",
+    "n_estimators": 139,
+    "max_depth": 3,
+    "learning_rate": 0.12237939015992216,
+    "subsample": 0.7557799218981749,
+    "colsample_bytree": 0.9964602176015277,
+    "min_child_weight": 7,
+    "random_state": 42
+  },
+  "Ludhiana South": {
+    "objective": "reg:squarederror",
+    "n_estimators": 213,
+    "max_depth": 3,
+    "learning_rate": 0.09070202910043255,
+    "subsample": 0.6023941991648628,
+    "colsample_bytree": 0.8628384742011095,
+    "min_child_weight": 10,
+    "random_state": 42
+  },
+  "Punjab Urban": {
+    "objective": "reg:squarederror",
+    "n_estimators": 175,
+    "max_depth": 3,
+    "learning_rate": 0.1719370009219725,
+    "subsample": 0.9533437577914682,
+    "colsample_bytree": 0.9979844171075761,
+    "min_child_weight": 10,
+    "random_state": 42
+  }
+}

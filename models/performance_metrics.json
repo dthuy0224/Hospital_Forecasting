@@ -1,44 +1,41 @@
 {
-  "Ho Chi Minh City": {
-    "location": "Ho Chi Minh City",
-    "mape": 8.578403645308184,
-    "mae": 7.360141162137138,
-    "rmse": 9.230723704339729,
-    "accuracy": 64.10958904109589,
-    "bias": -1.180867766947813e-05,
-    "relative_bias": -1.2574484382267014e-05,
-    "training_points": 366,
-    "forecast_days": 14,
-    "mean_actual": 93.90983606557377,
-    "mean_predicted": 93.9098242568961,
-    "optimization_date": "2025-10-11T22:22:08.620214"
+  "Ludhiana Central": {
+    "location": "Ludhiana Central",
+    "mae": 0.7477888612840602,
+    "mse": 0.7427755308282912,
+    "rmse": 0.8618442613536921,
+    "mape": 64.40021364827263,
+    "smape": 151.04546112806545,
+    "accuracy": 35.599786351727374,
+    "test_days": 30,
+    "mean_actual": 0.4666666666666667,
+    "mean_predicted": -0.28036694294418213,
+    "non_zero_samples": 14
   },
-  "Ha Noi": {
-    "location": "Ha Noi",
-    "mape": 8.841922159381326,
-    "mae": 7.886812686850749,
-    "rmse": 9.807456205858026,
-    "accuracy": 62.19178082191781,
-    "bias": -0.011784693646831101,
-    "relative_bias": -0.012450416750108776,
-    "training_points": 366,
-    "forecast_days": 14,
-    "mean_actual": 94.65300546448087,
-    "mean_predicted": 94.64122077083404,
-    "optimization_date": "2025-10-11T22:22:08.837208"
+  "Ludhiana South": {
+    "location": "Ludhiana South",
+    "mae": 0.671140486353186,
+    "mse": 0.6140142723805251,
+    "rmse": 0.783590628058124,
+    "mape": 138.89393265872044,
+    "smape": 200.0,
+    "accuracy": 0.0,
+    "test_days": 30,
+    "mean_actual": 0.03333333333333333,
+    "mean_predicted": 0.08063645991182468,
+    "non_zero_samples": 1
   },
-  "Da Nang": {
-    "location": "Da Nang",
-    "mape": 9.07231479387216,
-    "mae": 7.631151380653292,
-    "rmse": 9.563358473867554,
-    "accuracy": 62.19178082191781,
-    "bias": -0.013825455250426444,
-    "relative_bias": -0.014777083262728377,
-    "training_points": 366,
-    "forecast_days": 14,
-    "mean_actual": 93.56010928961749,
-    "mean_predicted": 93.54628383436706,
-    "optimization_date": "2025-10-11T22:22:09.039187"
+  "Punjab Urban": {
+    "location": "Punjab Urban",
+    "mae": 1.1296959605908674,
+    "mse": 1.5907807962479137,
+    "rmse": 1.2612615891431538,
+    "mape": 95.81747765279974,
+    "smape": 172.87397608134214,
+    "accuracy": 4.182522347200262,
+    "test_days": 30,
+    "mean_actual": 0.4666666666666667,
+    "mean_predicted": 0.6526904440896624,
+    "non_zero_samples": 14
   }
 }

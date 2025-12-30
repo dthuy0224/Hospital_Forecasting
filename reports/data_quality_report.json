@@ -1,11 +1,11 @@
 {
-  "total_records": 455,
+  "total_records": 1980,
   "date_range": {
-    "start": "2024-01-01",
-    "end": "2024-03-31",
-    "days": 90
+    "start": "2017-01-04",
+    "end": "2019-12-03",
+    "days": 1063
   },
-  "locations": 5,
+  "locations": 3,
   "missing_values": {
     "date": 0,
     "location": 0,
@@ -24,33 +24,27 @@
     "admissions_per_100k": 0
   },
   "statistics": {
-    "mean_daily_admissions": 238.03956043956043,
-    "median_daily_admissions": 213.0,
-    "std_daily_admissions": 98.91235928431603,
-    "min_admissions": 73,
-    "max_admissions": 484
+    "mean_daily_admissions": 4.459595959595959,
+    "median_daily_admissions": 4.0,
+    "std_daily_admissions": 2.6395146778521816,
+    "min_admissions": 0,
+    "max_admissions": 15
   },
   "location_summary": {
     "count": {
-      "Can Tho": 91,
-      "Da Nang": 91,
-      "Ha Noi": 91,
-      "Hai Phong": 91,
-      "Ho Chi Minh City": 91
+      "Ludhiana Central": 660,
+      "Ludhiana South": 660,
+      "Punjab Urban": 660
     },
     "mean": {
-      "Can Tho": 142.78021978021977,
-      "Da Nang": 198.9120879120879,
-      "Ha Noi": 308.68131868131866,
-      "Hai Phong": 171.58241758241758,
-      "Ho Chi Minh City": 368.24175824175825
+      "Ludhiana Central": 4.493939393939394,
+      "Ludhiana South": 4.428787878787879,
+      "Punjab Urban": 4.456060606060606
     },
     "std": {
-      "Can Tho": 31.404812864627466,
-      "Da Nang": 43.160333731499435,
-      "Ha Noi": 63.05832910371849,
-      "Hai Phong": 41.01952541414229,
-      "Ho Chi Minh City": 58.90356349517229
+      "Ludhiana Central": 2.6566193440659105,
+      "Ludhiana South": 2.6459385747366206,
+      "Punjab Urban": 2.619445712074684
     }
   }
 }

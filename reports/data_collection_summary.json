@@ -1,30 +1,28 @@
 {
-  "generated_at": "2025-08-26T12:35:24.959936",
+  "data_source": "Kaggle HDHI Hospital Admissions",
+  "generated_at": "2025-12-25T14:36:38.214721",
   "date_range": {
-    "start": "2024-01-01",
-    "end": "2024-03-31",
-    "days": 91
+    "start": "2017-01-04",
+    "end": "2019-12-03",
+    "days": 660
   },
   "locations": {
-    "count": 5,
+    "count": 3,
     "list": [
-      "Can Tho",
-      "Da Nang",
-      "Ha Noi",
-      "Hai Phong",
-      "Ho Chi Minh City"
+      "Ludhiana Central",
+      "Ludhiana South",
+      "Punjab Urban"
     ]
   },
   "diseases": {
-    "count": 7,
+    "count": 6,
     "list": [
-      "COVID-19",
-      "Dengue Fever",
       "Diabetes",
-      "Flu",
       "Heart Disease",
-      "Others",
-      "Pneumonia"
+      "Infection",
+      "Kidney Disease",
+      "Neurological",
+      "Stroke"
     ]
   },
   "age_groups": {
@@ -38,15 +36,15 @@
     ]
   },
   "records": {
-    "admissions": 15266,
-    "capacity": 455,
-    "total": 15721
+    "admissions": 59400,
+    "capacity": 1980,
+    "total": 61380
   },
   "statistics": {
-    "avg_daily_admissions": 7.356019913533342,
-    "max_daily_admissions": 63,
-    "total_admissions": 112297,
-    "avg_total_beds": 2700.0,
-    "avg_icu_beds": 270.0
+    "avg_daily_admissions": 0.20185185185185187,
+    "max_daily_admissions": 10,
+    "total_admissions": 11990,
+    "avg_total_beds": 383.3333333333333,
+    "avg_icu_beds": 38.333333333333336
   }
 }
