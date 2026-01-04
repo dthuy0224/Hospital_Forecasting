@@ -94,4 +94,3 @@ curl "http://localhost:8000/predict/Ludhiana%20Central?days=7&model=xgboost"
 MIT License
 
 ---
-*Built with ❤️ for healthcare analytics*

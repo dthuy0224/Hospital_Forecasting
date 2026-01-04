@@ -20,10 +20,7 @@ sys.modules['plotly.subplots'] = MagicMock()
 from visualization.streamlit_dashboard import load_data, create_forecast_chart, calculate_alert_level
 
 class TestDashboardFunctions(unittest.TestCase):
-    """Test cases for Dashboard Functions"""
-    
     def setUp(self):
-        """Set up test data"""
         # Create sample data
         dates = pd.date_range('2023-01-01', periods=90, freq='D')
         self.sample_data = pd.DataFrame({
@@ -46,8 +43,6 @@ class TestDashboardFunctions(unittest.TestCase):
         }
     
     def test_data_loading(self):
-        """Test data loading functionality"""
-        # Test the actual load_data function
         try:
             forecasts, performance_metrics, historical_data, capacity_data = load_data()
             
@@ -57,12 +52,9 @@ class TestDashboardFunctions(unittest.TestCase):
             self.assertIsInstance(historical_data, pd.DataFrame)
             self.assertIsInstance(capacity_data, pd.DataFrame)
         except ValueError as e:
-            # Expected in test environment without data files
             self.assertIn("not enough values to unpack", str(e))
     
     def test_forecast_chart_creation(self):
-        """Test forecast chart creation"""
-        # Test create_forecast_chart function
         chart = create_forecast_chart(self.sample_data, 'Ho Chi Minh City', days_to_show=30)
         
         # Check that chart is created (will be None in test environment)
