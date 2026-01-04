@@ -1,9 +1,18 @@
-# Ensure latest pip, setuptools, wheel for Python 3.12 compatibility
+# ============================================
+# Hospital Forecasting - Requirements
+# Cleaned up version - only used packages
+# ============================================
+
+# Build Tools (Python 3.12 compatibility)
 pip>=23.3
 setuptools>=68.0.0
 wheel
 
-# Core Data Science Libraries
+# ============================================
+# CORE DEPENDENCIES
+# ============================================
+
+# Data Science
 pandas>=2.1.4
 numpy>=1.26.0
 matplotlib>=3.8.2
@@ -23,35 +32,28 @@ uvicorn>=0.27.0
 pydantic>=2.5.0
 python-multipart>=0.0.6
 
-
-# Data Collection & APIs
+# Data Collection
 requests>=2.31.0
 beautifulsoup4>=4.12.2
+kaggle
 
-# Database & Storage
+# Database (SQLite is built-in, SQLAlchemy for ORM)
 sqlalchemy>=2.0.23
-psycopg2-binary>=2.9.9
 
-# Dashboard & Visualization
+# Dashboard
 streamlit>=1.29.0
-dash>=2.16.1
 
 # Data Processing
 openpyxl>=3.1.2
 xlsxwriter>=3.1.9
 
-# Development & Testing
+# ============================================
+# DEVELOPMENT DEPENDENCIES
+# ============================================
+
+# Testing
 pytest>=7.4.3
+
+# Jupyter (optional for notebooks)
 jupyter>=1.0.0
 ipykernel>=6.27.1
-
-# Datasets list
-sodapy
-quandl
-ckanapi
-kaggle
-datasets
-
-# Optional Cloud Services
-google-cloud-bigquery>=3.13.0
-boto3>=1.34.0

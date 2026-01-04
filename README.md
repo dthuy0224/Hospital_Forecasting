@@ -1,45 +1,97 @@
-# Hospital Demand Forecasting Project
+# 🏥 Hospital Demand Forecasting
 
-## 📋 Project Overview
-A comprehensive hospital demand forecasting system that predicts patient admissions and helps optimize healthcare resource allocation.
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-green.svg)](https://fastapi.tiangolo.com/)
+[![XGBoost](https://img.shields.io/badge/XGBoost-Accuracy%2095.85%25-orange.svg)](https://xgboost.readthedocs.io/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 
-## 🏗️ Project Architecture
-```
-Data Ingestion → Data Storage → Data Processing → ML Modeling → Visualization
-```
-
-## 🛠️ Tech Stack
-- **Data Processing**: Python, Pandas, NumPy
-- **ML/Forecasting**: Prophet, ARIMA, Scikit-learn
-- **Database**: PostgreSQL, SQLite
-- **Orchestration**: Apache Airflow
-- **Visualization**: Streamlit, Plotly
-- **Cloud**: Optional (AWS S3, BigQuery)
+> AI-powered hospital admission forecasting system with **95.85% accuracy**
 
 ## 📊 Features
-- Time series forecasting for patient admissions
-- Multi-region demand prediction
-- Resource allocation optimization
-- Early warning system for hospital overload
-- Interactive dashboard
 
-## 🎯 Project Goals
-- Predict hospital admissions 7-14 days ahead
-- Achieve 85%+ accuracy in forecasting
-- Process 1M+ records efficiently
-- Provide real-time insights
+- **Real Data**: Kaggle HDHI Hospital dataset (15,757 records)
+- **Advanced ML**: XGBoost + Prophet with Optuna hyperparameter tuning
+- **99 Features**: Holidays, weather, demographics, Fourier seasonality
+- **REST API**: FastAPI with Swagger docs
+- **Docker Ready**: One-command deployment
 
-## 📈 Expected Outcomes
-- Improved hospital resource planning
-- 20% reduction in preparation time
-- 30% better resource allocation efficiency
+## 🏗️ Architecture
 
-## 🔄 Development Phases
-1. **Phase 1**: Data Collection & Setup
-2. **Phase 2**: Data Processing Pipeline
-3. **Phase 3**: Forecasting Models
-4. **Phase 4**: Dashboard Development
-5. **Phase 5**: Deployment & Testing
+```
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│   Kaggle    │────▶│  Preprocess │────▶│   Models    │────▶│   API/UI    │
+│    Data     │     │  99 Features│     │ XGB+Prophet │     │   FastAPI   │
+└─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
+```
+
+## 🚀 Quick Start
+
+### Option 1: Docker (Recommended)
+```bash
+docker-compose up -d
+# API: http://localhost:8000/docs
+# Dashboard: http://localhost:8501
+```
+
+### Option 2: Local
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run pipeline
+python run_pipeline.py
+
+# Run API
+python -m uvicorn src.api.main:app --reload
+```
+
+## 📡 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/health` | Health check |
+| GET | `/locations` | List locations |
+| GET | `/predict/{location}` | Get forecast |
+| GET | `/metrics` | Model performance |
+| GET | `/docs` | Swagger UI |
+
+### Example Request
+```bash
+curl "http://localhost:8000/predict/Ludhiana%20Central?days=7&model=xgboost"
+```
+
+## 📈 Model Performance
+
+| Model | Accuracy | MAPE |
+|-------|----------|------|
+| XGBoost | **95.85%** | 4.15% |
+| Prophet | 35.60% | 64.40% |
+
+## 🗂️ Project Structure
+
+```
+├── src/
+│   ├── api/              # FastAPI REST API
+│   ├── data_ingestion/   # Kaggle data collector
+│   ├── data_processing/  # Feature engineering
+│   ├── models/           # Prophet, XGBoost
+│   └── visualization/    # Streamlit dashboard
+├── config/               # Configuration
+├── data/                 # Data files
+├── models/               # Saved models
+├── Dockerfile
+└── docker-compose.yml
+```
+
+## ⚙️ Requirements
+
+- Python 3.11+
+- Kaggle API credentials (`~/.kaggle/kaggle.json`)
+- Docker (optional)
+
+## 📄 License
+
+MIT License
 
 ---
-*This project demonstrates end-to-end data science and engineering skills for healthcare analytics.*
+*Built with ❤️ for healthcare analytics*

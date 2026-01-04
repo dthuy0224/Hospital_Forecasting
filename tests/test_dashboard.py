@@ -1,8 +1,3 @@
-#!/usr/bin/env python3
-"""
-Simple unit tests for dashboard module
-"""
-
 import unittest
 import pandas as pd
 import numpy as np
